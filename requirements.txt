@@ -1,0 +1,11 @@
+click
+bluepy
+RPi.GPIO
+luma.core
+luma.oled
+Pillow
+mojimoji
+netifaces
+numpy
+Adafruit_GPIO
+paho-mqtt
