@@ -7,6 +7,7 @@ BINFILES="MyLogger.py"
 BINFILES="${BINFILES} MmBlebc2.py MmBlebc2Publisher.py"
 BINFILES="${BINFILES} boot-MmBlebc2Publisher.sh"
 BINFILES="${BINFILES} Mqtt.py BleScan.py Oled.py OledText.py"
+BINFILES="${BINFILES} waitIP.sh"
 
 PKGS="libjpeg-dev"
 

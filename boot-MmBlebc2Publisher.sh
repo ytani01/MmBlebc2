@@ -79,19 +79,35 @@ fi
 ts_echo "VIRTUAL_ENV=${VIRTUAL_ENV}"
 
 #
-# check running
+# check running and kill
 #
 PID=`ps axw | grep -v grep | grep python3 | grep ${CMD} | sed 's/^ *//' | cut -d ' ' -f 1`
 ts_echo "PID=${PID}"
 
-#
-# restart $CMD
-#
 if [ ! -z ${PID} ]; then
     ts_echo_do kill ${PID}
     ts_echo_do sleep 2
 fi
 
+#
+# wait IP up
+#
+ts_echo "wait IP addr .."
+while [ `/sbin/ifconfig -a | grep inet | grep -v inet6 | grep -v 127.0.0 | wc -l` -eq 0 ]; do
+    ts_echo ".."
+    ts_echo_do sleep 1
+done
+
+#
+# restart bluetooth.service
+#
+ts_echo "restaret bluetooth.service .."
+ts_echo_do sudo systemctl restart bluetooth.service
+sleep 2
+
+#
+# start $CMD
+#
 CMDLINE="${CMD} ${MACADDR} ${TOKEN} ${CH} ${RES} ${OLED}"
 ts_echo ${CMDLINE}
 ${CMDLINE} >> ${LOGFILE} 2>&1 &
