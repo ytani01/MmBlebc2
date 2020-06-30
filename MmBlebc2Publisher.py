@@ -55,8 +55,8 @@ class App:
         self._mqtt = BeebottePublisher(self._token, debug=self._dbg)
 
         if self._oled:
-            self._ot = OledText('ssd1306', 1, 2, debug=self._dbg)
-            self._ot.set_part('header', crlf=False)
+            self._ot = OledText('ssd1306', 2, 1, debug=self._dbg)
+            self._ot.set_part('footer', crlf=False)
             self._ot.print(self._ip)
 
     def main(self):
@@ -107,8 +107,8 @@ class App:
             self._ot.set_part('body')
             self._ot.print('%.2f ℃   %.2f %%' % (t, h))
 
-            self._ot.set_part('footer')
-            self._ot.set_row(0, 'footer')
+            self._ot.set_part('header')
+            self._ot.set_row(0, 'header')
             self._ot.print(time.strftime('%Y/%m/%d(%a)'))
             self._ot.print(time.strftime('%H:%M:%S'))
 
