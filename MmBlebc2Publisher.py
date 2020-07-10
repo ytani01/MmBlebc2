@@ -105,6 +105,7 @@ class App:
 
         if self._oled:
             self._ot.set_part('body')
+            self._ot.set_row(0, 'body')
             self._ot.print('%.2f ℃   %.2f %%' % (t, h))
 
             self._ot.set_part('header')
