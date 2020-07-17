@@ -103,7 +103,7 @@ done
 #
 ts_echo "restaret bluetooth.service .."
 
-ts_echo_do sudo systemctl restart bluetooth.service
+ts_echo_do sudo /etc/init.d/bluetooth restart
 sleep 3
 
 ts_echo_do sudo hciconfig hci0 reset
