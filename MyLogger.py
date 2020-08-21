@@ -1,1 +1,1 @@
-../Template/MyLogger.py
+../Templates/MyLogger.py
